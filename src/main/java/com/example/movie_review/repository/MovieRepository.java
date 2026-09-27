@@ -17,5 +17,4 @@ public interface MovieRepository extends MongoRepository<Movie, String> {
 
     List<Movie> findByTitleContainingIgnoreCase(String title);
 
-    List<Movie> findByYear(Integer year);
-}
+    List<Movie> findByReleaseYear(Integer year);}

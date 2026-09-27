@@ -35,14 +35,14 @@ public class MovieService {
                 .orElseThrow(() -> new RuntimeException("Movie not found with id: " + id));
         movie.setTitle(movieDetails.getTitle());
         movie.setGenre(movieDetails.getGenre());
-        movie.setYear(movieDetails.getYear());
+        movie.setReleaseYear(movieDetails.getReleaseYear());
+
         movie.setPosterUrl(movieDetails.getPosterUrl());
         movie.setDescription(movieDetails.getDescription());
         movie.setDirector(movieDetails.getDirector());
-        movie.setCast(movieDetails.getCast());
+        movie.setActors(movieDetails.getActors());
         movie.setDuration(movieDetails.getDuration());
-        movie.setRating(movieDetails.getRating());
-        return movieRepository.save(movie);
+        movie.setAverageRating(movieDetails.getAverageRating());        return movieRepository.save(movie);
     }
 
     public void deleteMovie(String id) {
@@ -58,9 +58,8 @@ public class MovieService {
     }
 
     public List<Movie> getMoviesByYear(Integer year) {
-        return movieRepository.findByYear(year);
+        return movieRepository.findByReleaseYear(year);
     }
-
     public boolean movieExists(String id) {
         return movieRepository.existsById(id);
     }
